@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xrc.mapper.UserMapper">
+
+    <insert id="insertList" >
+        INSERT INTO test (name,pwd,salt) VALUES (#{name},#{pwd},#{salt})
+
+    </insert>
+
+    <select id="findByUserName" resultType="xrc.domain.User">
+        SELECT * FROM test WHERE name = #{name}
+    </select>
+
+    <select id="findByAll" resultType="xrc.domain.User">
+        SELECT name FROM test
+    </select>
+
+    <select id="fetchSql" resultType="xrc.domain.Event">
+        select * from event
+    </select>
+
+    <insert id="insertEvent">
+        insert into event (username,voteItem,voterList,timeKeyStart,timeVoteStart,timeSumStart,timeSumEnd)
+        values (#{username},#{voteItem},#{voterList},#{timeKeyStart},#{timeVoteStart},#{timeSumStart},#{timeSumEnd})
+    </insert>
+
+    <select id="findBySqlName" resultType="xrc.domain.Event">
+        SELECT * FROM event WHERE name = #{name}
+    </select>
+</mapper>
